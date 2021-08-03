@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31fb904877f6efc42944745188f9a841, type: 3}
+  m_Name: TutubaraoDeadStateData
+  m_EditorClassIdentifier: 
+  itens:
+  - {fileID: 8448771639348928491, guid: 92c52d208725e42458aa52c630f1aedf, type: 3}
+  - {fileID: 1372219177439057013, guid: bf3089654aa528a43a49a2a3c5ea3d5e, type: 3}
+  - {fileID: 6386380964809764300, guid: 7f4c77194da0d124dae9b9d5a8f23dbb, type: 3}
+  - {fileID: 8448771639348928491, guid: 92c52d208725e42458aa52c630f1aedf, type: 3}
+  - {fileID: 6386380964809764300, guid: 7f4c77194da0d124dae9b9d5a8f23dbb, type: 3}
+  - {fileID: 1372219177439057013, guid: bf3089654aa528a43a49a2a3c5ea3d5e, type: 3}
+  - {fileID: 8448771639348928491, guid: 92c52d208725e42458aa52c630f1aedf, type: 3}
+  - {fileID: 6386380964809764300, guid: 7f4c77194da0d124dae9b9d5a8f23dbb, type: 3}
+  - {fileID: 1372219177439057013, guid: bf3089654aa528a43a49a2a3c5ea3d5e, type: 3}
+  - {fileID: 8448771639348928491, guid: 92c52d208725e42458aa52c630f1aedf, type: 3}
+  - {fileID: 6386380964809764300, guid: 7f4c77194da0d124dae9b9d5a8f23dbb, type: 3}
+  - {fileID: 1372219177439057013, guid: bf3089654aa528a43a49a2a3c5ea3d5e, type: 3}
+  - {fileID: 8448771639348928491, guid: 92c52d208725e42458aa52c630f1aedf, type: 3}
+  - {fileID: 6386380964809764300, guid: 7f4c77194da0d124dae9b9d5a8f23dbb, type: 3}
+  - {fileID: 1372219177439057013, guid: bf3089654aa528a43a49a2a3c5ea3d5e, type: 3}
+  - {fileID: 9040194622764031977, guid: b142bebd0e8f8254e813e8733a85efa8, type: 3}
+  - {fileID: 9040194622764031977, guid: b142bebd0e8f8254e813e8733a85efa8, type: 3}
+  - {fileID: 9040194622764031977, guid: b142bebd0e8f8254e813e8733a85efa8, type: 3}
+  - {fileID: 9040194622764031977, guid: b142bebd0e8f8254e813e8733a85efa8, type: 3}
+  - {fileID: 9040194622764031977, guid: b142bebd0e8f8254e813e8733a85efa8, type: 3}
+  waitTime: 5
