@@ -21,7 +21,6 @@ public class PlayerHurtState : PlayerState
         core.Movements.SetVelocityToZero();
         player.SetCanShoot();
         player.isInvincible = true;
-        
     }
 
     public override void Exit()
@@ -36,7 +35,12 @@ public class PlayerHurtState : PlayerState
         base.LogicUpdate();
         if(isAnimationFinished)
         {
-            stateMachine.ChangeState(player.IdleState);
+            if (player.currentHealth >= 15)
+                stateMachine.ChangeState(player.IdleState);
+            else if (player.currentHealth > 5 && player.currentHealth < 15)
+                stateMachine.ChangeState(player.Damage1IdleState);
+            else if (player.currentHealth == 5)
+                stateMachine.ChangeState(player.Damage2IdleState);
         }
     }
 

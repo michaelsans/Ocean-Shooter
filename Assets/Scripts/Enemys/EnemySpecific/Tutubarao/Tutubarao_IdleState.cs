@@ -38,9 +38,12 @@ public class Tutubarao_IdleState : IdleState
             {
                 stateMachine.ChangeState(enemy.FullHPMoveState);
             }
-            
         }
-        else if(Time.time >= startTime + stateData.minIdleTime && core.CollisionSenses.WallFront)
+        else if (Time.time >= startTime + stateData.minIdleTime && core.CollisionSenses.WallFront && enemy.hasMissile)
+        {
+            stateMachine.ChangeState(enemy.RangedAttackState);
+        }
+        else if(Time.time >= startTime + stateData.minIdleTime && core.CollisionSenses.WallFront && !enemy.hasMissile)
         {
             stateMachine.ChangeState(enemy.ChargeState);
         }

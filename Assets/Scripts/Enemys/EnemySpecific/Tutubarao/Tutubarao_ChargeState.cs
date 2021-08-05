@@ -28,13 +28,20 @@ public class Tutubarao_ChargeState : ChargeState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if(isPlayerinMinAggroRange)
+        if (enemy.hasMissile)
+        {
+            stateMachine.ChangeState(enemy.RangedAttackState);
+        }
+        else if (isPlayerinMinAggroRange)
         {
             stateMachine.ChangeState(enemy.MeeleAttackState);
         }
         else if (isChargeTimeOver)
         {
             enemy.Teleport();
+            
+            if(!enemy.hasMissile)
+                enemy.CreateMissile();
 
             if (enemy.currentHealth <= enemy.entityData.maxHealth / 2)
             {

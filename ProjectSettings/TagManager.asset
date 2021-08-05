@@ -12,6 +12,7 @@ TagManager:
   - Collectable
   - Wall
   - Tubarao
+  - Colisao
   layers:
   - Default
   - TransparentFX

@@ -35,7 +35,12 @@ public class PlayerMoveState : PlayerGroundedState
 
         if (xInput == 0 && yInput == 0 && !isExitingState)
         {
-            stateMachine.ChangeState(player.IdleState);
+            if (player.currentHealth >= 15)
+                stateMachine.ChangeState(player.IdleState);
+            else if (player.currentHealth > 5 && player.currentHealth < 15)
+                stateMachine.ChangeState(player.Damage1IdleState);
+            else if (player.currentHealth == 5)
+                stateMachine.ChangeState(player.Damage2IdleState);
         }
     }
 

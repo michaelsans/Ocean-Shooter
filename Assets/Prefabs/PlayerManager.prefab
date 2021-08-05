@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6033b1387495806409251ef1d4e53a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   projetil: {fileID: 771930232, guid: 37805bdf43d985e4f9f3df26beab561f, type: 3}
+  shop: {fileID: 4774375401207713172, guid: d8418c4a4fdf94842b525635eb36a02b, type: 3}
   updateScore: 0
   updateMoney: 0
+  updateRecord: 0
+  updateItemPurchased: 

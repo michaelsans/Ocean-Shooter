@@ -27,7 +27,7 @@ public class DeadState : State
         {
             c.enabled = false;
         }
-        entity.gameObject.GetComponent<Entity>().enabled = false;
+
     }
 
     public override void Exit()

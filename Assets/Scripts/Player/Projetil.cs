@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Projetil : MonoBehaviour
 {
-    [SerializeField]
     private NewPlayer player;
     private PlayerManager score;
     private Rigidbody2D rb;

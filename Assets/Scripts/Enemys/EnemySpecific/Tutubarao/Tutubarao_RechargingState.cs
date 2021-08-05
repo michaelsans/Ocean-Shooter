@@ -31,6 +31,8 @@ public class Tutubarao_RechargingState : RechargingState
         if (core.CollisionSenses.WallFront)
         {
             entity.Teleport();
+            if (!enemy.hasMissile)
+                enemy.CreateMissile();
             stateMachine.ChangeState(enemy.IdleState);
         }
 

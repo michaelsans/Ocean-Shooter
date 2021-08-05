@@ -24,6 +24,7 @@ public class SpawnEnemies : MonoBehaviour
 
     void Update()
     {
+        
         timeToFlee = GameObject.Find("tutubarao").GetComponent<Tutubarao>().timeToFlee;
         if (!timeToFlee && Time.time >= startTime + spawnTime && maxSpawn <= 50)
         {
@@ -38,10 +39,14 @@ public class SpawnEnemies : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        rand = Random.Range(0, enemy.Length);
-        startTime = Time.time;
-        newPosx.transform.position = new Vector3(Random.Range(spawnPos1.transform.position.x, spawnPos2.transform.position.x), 160f,0f);
-        Instantiate(enemy[rand], newPosx.transform.position, Quaternion.identity);
+        if (!GameObject.FindGameObjectWithTag("Tubarao"))
+        {
+            rand = Random.Range(0, enemy.Length);
+            startTime = Time.time;
+            newPosx.transform.position = new Vector3(Random.Range(spawnPos1.transform.position.x, spawnPos2.transform.position.x), 160f, 0f);
+            Instantiate(enemy[rand], newPosx.transform.position, Quaternion.identity);
+        }
+        
     }
 
     private void ResetSpawn()

@@ -43,6 +43,9 @@ public class Pexe : Entity, IDamageable
                 damageable.TakeDamage(entityData.damage, false);
             }
         }
+
+        if (collision.tag == "Colisao")
+            Destroy(gameObject);
     }
     public override void Update()
     {

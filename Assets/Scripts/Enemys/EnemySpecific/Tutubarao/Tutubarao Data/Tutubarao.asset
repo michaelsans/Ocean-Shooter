@@ -17,7 +17,7 @@ MonoBehaviour:
   damageHopSpeed: 5
   wallCheckDistance: 0.2
   maxAggroRangeDist: 30
-  minAggroRangeDist: 3
+  minAggroRangeDist: 6
   stunResistence: 3
   stunRecoveryTime: 2
   closeRangeActionDistance: 1
@@ -30,3 +30,4 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
+  missile: {fileID: 8277592331767918119, guid: 2f515ba52481f084aa2704c8e3a41b6c, type: 3}

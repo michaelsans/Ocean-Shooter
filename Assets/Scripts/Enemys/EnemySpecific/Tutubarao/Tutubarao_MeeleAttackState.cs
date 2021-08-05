@@ -5,7 +5,6 @@ using UnityEngine;
 public class Tutubarao_MeeleAttackState : MeeleAttackState
 {
     private Tutubarao enemy;
-
     public Tutubarao_MeeleAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeeleAttack stateData, Tutubarao enemy) : base(entity, stateMachine, animBoolName, attackPosition, stateData)
     {
         this.enemy = enemy;

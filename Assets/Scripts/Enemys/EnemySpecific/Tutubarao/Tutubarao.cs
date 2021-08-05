@@ -12,6 +12,7 @@ public class Tutubarao : Entity, IDamageable
     public Tutubarao_RechargingState FullHPRechargingState { get; private set; }
     public Tutubarao_RechargingState HalfHPRechargingState { get; private set; }
     public Tutubarao_MeeleAttackState MeeleAttackState { get; private set; }
+    public Tutubarao_RangedAttackState RangedAttackState { get; private set; }
     public Tutubarao_DeadState DeadState { get; private set; }
     public Tutubarao_ChargeState ChargeState { get; private set; }
 
@@ -26,15 +27,22 @@ public class Tutubarao : Entity, IDamageable
     [SerializeField]
     private D_MeeleAttack meeleAttackStateData;
     [SerializeField]
+    private D_RangedAttackState rangedAttackStateData;
+    [SerializeField]
     private D_DeadState deadStateData;
     [SerializeField]
     private D_ChargeState chargeStateData;
+
+    [SerializeField]
+    private Transform[] misselPos;
 
     [SerializeField]
     private Transform attackPosition;
     [SerializeField]
     public Transform idleLocation;
     public GameObject brilho;
+    public bool hasMissile;
+    public Transform newPlayerPos;
     public override void Awake()
     {
         base.Awake();
@@ -45,8 +53,11 @@ public class Tutubarao : Entity, IDamageable
         FullHPRechargingState = new Tutubarao_RechargingState(this, stateMachine, "rechargingFullHP", rechargingStateData, this);
         HalfHPRechargingState = new Tutubarao_RechargingState(this, stateMachine, "rechargingHalfHP", rechargingStateData, this);
         MeeleAttackState = new Tutubarao_MeeleAttackState(this, stateMachine, "meeleAttack", attackPosition, meeleAttackStateData, this);
+        RangedAttackState = new Tutubarao_RangedAttackState(this, stateMachine, "missel", attackPosition, rangedAttackStateData, this);
         DeadState = new Tutubarao_DeadState(this, stateMachine, "dead", deadStateData, this);
         ChargeState = new Tutubarao_ChargeState(this, stateMachine, "charge", chargeStateData, this);
+
+        CreateMissile();
 
         stateMachine.Initialize(FullHPMoveState);
     }
@@ -63,10 +74,19 @@ public class Tutubarao : Entity, IDamageable
         }
     }
 
+    public void CreateMissile()
+    {
+        for (int i = 0; i < misselPos.Length; i++)
+        {
+            Instantiate(entityData.missile, misselPos[i].transform.position, Quaternion.identity, misselPos[i].parent);
+        }
+        hasMissile = true;
+    }
+
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
-        Gizmos.DrawWireSphere(attackPosition.position, meeleAttackStateData.attackRadius);
+        //Gizmos.DrawWireSphere(attackPosition.position, meeleAttackStateData.attackRadius);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

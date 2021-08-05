@@ -14,6 +14,7 @@ public class FiniteStateMachine
 
     public void ChangeState(State newState)
     {
+        Debug.Log(newState);
         currentState.Exit();
         currentState = newState;
         currentState.Enter();

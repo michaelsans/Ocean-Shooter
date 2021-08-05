@@ -61,5 +61,7 @@ public class PeixeEspada : Entity, IDamageable
                 damageable.TakeDamage(5, false);
             }
         }
+        if (collision.tag == "Colisao")
+            Destroy(gameObject);
     }
 }

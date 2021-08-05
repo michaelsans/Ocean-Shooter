@@ -29,6 +29,7 @@ public class LootMenu : MonoBehaviour
         }  
         else if (!alive)
         {
+            
             StartCoroutine(GameOver());
         }
     }
@@ -60,13 +61,15 @@ public class LootMenu : MonoBehaviour
     public void BackToBase()
     {
         SceneManager.LoadScene(0);
+        NewAudioManager.instance.Play("Theme");
+        NewAudioManager.instance.Play("bubbles"); 
     }
 
     IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(.7f);
         loot.SetActive(true);
-        Time.timeScale = 0f;
+        yield return new WaitForSeconds(.7f);
+        Time.timeScale = 0.1f;
     }
 
 }

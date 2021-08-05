@@ -65,7 +65,7 @@ public class Entity : MonoBehaviour, IDamageable
     }
     public virtual bool CheckPlayerInMinAggroRange()
     {
-        return Physics2D.Raycast(playerCheck.position, transform.right, entityData.minAggroRangeDist, entityData.whatIsPlayer);
+        return Physics2D.OverlapCircle(playerCheck.position, entityData.minAggroRangeDist, entityData.whatIsPlayer);
     }
     public virtual bool CheckPlayerInMaxAggroRange()
     {
@@ -116,23 +116,9 @@ public class Entity : MonoBehaviour, IDamageable
             isDead = true;
         }
     }
-
-    public void CleanUP()
-    {
-        Destroy(gameObject);
-    }
+    
     public virtual void OnDrawGizmos()
     {
-        //if(Core != null)
-        //{
-            //Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.down * entityData.wallCheckDistance));
-            //Gizmos.DrawLine(playerCheck.position, playerCheck.position + (Vector3)(Vector2.down * entityData.wallCheckDistance));
-
-            //Gizmos.DrawWireSphere(playerCheck.transform.position, 2f);
-            //Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * Core.Movements.FacingDirection * entityData.closeRangeActionDistance), 0.2f);
-            //Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * Core.Movements.FacingDirection * entityData.minAggroRangeDist), 0.2f);
-            //Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * Core.Movements.FacingDirection * entityData.maxAggroRangeDist), 0.2f);
-        //}
-        
+        Gizmos.DrawWireSphere(playerCheck.position, entityData.minAggroRangeDist);
     }
 }

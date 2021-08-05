@@ -15,6 +15,8 @@ public class NewPlayerData : ScriptableObject
 
     [Header("Attack State")]
     public GameObject projetil;
-
     public int Damage = 100;
+
+    [Header("HurtState")]
+    public GameObject[] pedacos;
 }

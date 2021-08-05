@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 6482658093628377351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.8, y: 11.8, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6482658093741425738}
   - {fileID: 6482658094312342689}
@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityData: {fileID: 11400000, guid: 6589ed4ede5e86a469d0e21b6d08a16d, type: 2}
+  timeToFlee: 0
+  randomN: 0
   playerCheck: {fileID: 6482658093741425738}
   wallCheck: {fileID: 6482658093995103138}
   spawnLocation: {fileID: 0}
@@ -265,6 +267,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512
+  whatIsFleeTime:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6482658093741425739
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6482658093741425739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -14.8, z: 0}
+  m_LocalPosition: {x: 0.1, y: -7.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6482658093628377346}

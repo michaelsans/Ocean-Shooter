@@ -23,4 +23,7 @@ public class D_Entity : ScriptableObject
 
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
+
+    [Header("Missile")]
+    public GameObject missile;
 }

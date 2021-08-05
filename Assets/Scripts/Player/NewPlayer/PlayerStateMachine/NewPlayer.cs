@@ -7,7 +7,11 @@ public class NewPlayer : MonoBehaviour, IDamageable
     #region State Variables
     public PlayerStateMachine StateMachine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
+    public PlayerIdleState Damage1IdleState { get; private set; }
+    public PlayerIdleState Damage2IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
+    public PlayerMoveState Damage1MoveState { get; private set; }
+    public PlayerMoveState Damage2MoveState { get; private set; }
     public PlayerHurtState HurtState { get; private set; }
     public PlayerHurtState EmptyState { get; private set; }
 
@@ -49,9 +53,10 @@ public class NewPlayer : MonoBehaviour, IDamageable
     public int score { get; private set; }
     public bool alive { get; private set; }
     public bool endLine { get; private set; }
-
+    
     public bool isInvincible;
     private LootMenu loot;
+    private int randomplace;
     #endregion
 
     #region Unity Callback Functions
@@ -63,10 +68,16 @@ public class NewPlayer : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
         StateMachine = new PlayerStateMachine();
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
+        Damage1IdleState = new PlayerIdleState(this, StateMachine, playerData, "dano1");
+        Damage2IdleState = new PlayerIdleState(this, StateMachine, playerData, "dano2");
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
+        Damage1MoveState = new PlayerMoveState(this, StateMachine, playerData, "dano1");
+        Damage2MoveState = new PlayerMoveState(this, StateMachine, playerData, "dano2");
         HurtState = new PlayerHurtState(this, StateMachine, playerData, "hurt");
         EmptyState = new PlayerHurtState(this, StateMachine, playerData, "empty");
-        damage = playerData.Damage;
+
+
+
         damage = playerData.Damage;
 
         alive = true;
@@ -86,6 +97,7 @@ public class NewPlayer : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        
         Core.LogicUpdate();
         StateMachine.CurrentState.LogicUpdate();
 
@@ -132,7 +144,8 @@ public class NewPlayer : MonoBehaviour, IDamageable
             {
                 Debug.Log("empty");
                 StateMachine.ChangeState(EmptyState);
-                
+                Tutubarao barao = FindObjectOfType<Tutubarao>();
+                transform.position = barao.newPlayerPos.transform.position;
             }
             else
             {
@@ -143,11 +156,33 @@ public class NewPlayer : MonoBehaviour, IDamageable
             if (currentHealth <= 0)
             {
                 alive = false;
+                NewAudioManager.instance.Pause("Theme");
+                NewAudioManager.instance.Pause("motor");
+                NewAudioManager.instance.Pause("bubbles");  
+                NewAudioManager.instance.Play("gameover");
+                for (int i = 0; i < 10; i++)
+                {
+                    LostaPiece();
+                }
                 PlayerManager.playerManagerInstance.SavePlayer();
-                //Die();
+                StateMachine.ChangeState(EmptyState);
+                
+            }
+            loot.SetHealthBar();
+            for (int i = 0; i < 3; i++)
+            {
+                LostaPiece();
             }
         }
-        loot.SetHealthBar();
+    }
+
+    public void LostaPiece()
+    {
+        int randomPiece = Random.Range(0, playerData.pedacos.Length);
+        randomplace = Random.Range(-10, 10);
+        int randomplacey = Random.Range(-3, 3);
+        Vector2 newPos = new Vector2 (transform.position.x + randomplace, transform.position.y + randomplacey);
+        Instantiate(playerData.pedacos[randomPiece], newPos, Quaternion.identity);
     }
 
     public void Shoot()

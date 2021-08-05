@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d25703eaa6be144980073300f4c6c8, type: 3}
   m_Name: PeixeEspada
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 100000
+  damage: 5
   damageHopSpeed: 5
   wallCheckDistance: 0.2
   maxAggroRangeDist: 30
@@ -29,3 +30,4 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
+  missile: {fileID: 0}
